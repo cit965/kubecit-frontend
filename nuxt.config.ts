@@ -8,4 +8,17 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  nitro:{
+    routeRules:{
+      'api/**':{
+        proxy:'http://localhost:8000/**'
+      }
+    }
+  },
+  runtimeConfig:{
+    public:{
+      baseUrl: '/api'
+    }
+  }
+
 })

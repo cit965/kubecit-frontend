@@ -22,9 +22,23 @@
         </div>
       </li>
     </ul>
+
+    <ul>
+        <li v-for="cluster in clusters">
+            {{cluster.id}} -{{ cluster.kubeconfig }} 
+        </li>
+    </ul>
   </template>
   
-  <script setup>
+  <script setup lang="ts">
+
+const url = "http://localhost:8000/clusters"
+const res = await useAsyncData("getClusters",()=>$fetch(url))
+ 
+const clusters  = ref(res.data._rawValue.clusters)
+
+
+
   const people = [
     {
       name: 'Leslie Alexander',
